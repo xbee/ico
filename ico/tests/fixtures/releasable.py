@@ -21,7 +21,7 @@ def release_agent(chain, team_multisig, token) -> Contract:
 
 @pytest.fixture
 def released_token(chain, team_multisig, token, release_agent, customer) -> Contract:
-    """Create a Crowdsale token where transfer restrictions have been lifted."""
+    """Create a TMNCrowdsale token where transfer restrictions have been lifted."""
 
     token.transact({"from": team_multisig}).setReleaseAgent(release_agent.address)
     release_agent.transact({"from": team_multisig}).release()

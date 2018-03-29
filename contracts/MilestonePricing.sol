@@ -7,9 +7,9 @@
 pragma solidity ^0.4.6;
 
 import "./PricingStrategy.sol";
-import "./Crowdsale.sol";
+import "./TMNCrowdsale.sol";
 import "./SafeMathLib.sol";
-import "zeppelin/contracts/ownership/Ownable.sol";
+import "./zeppelin/contracts/ownership/Ownable.sol";
 
 
 /// @dev Time milestone based pricing with special support for pre-ico deals.
@@ -106,7 +106,7 @@ contract MilestonePricing is PricingStrategy, Ownable {
   }
 
   function isSane(address _crowdsale) public constant returns(bool) {
-    Crowdsale crowdsale = Crowdsale(_crowdsale);
+    TMNCrowdsale crowdsale = TMNCrowdsale(_crowdsale);
     return crowdsale.startsAt() == getPricingStartsAt() && crowdsale.endsAt() == getPricingEndsAt();
   }
 

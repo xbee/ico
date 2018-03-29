@@ -44,7 +44,7 @@ As the writing of this, Ethereum smart contract ICO business has been booming al
 
 This package provides
 
-* Crowdsale contracts: token, ICO, uncapped ICO, pricing, transfer lock ups, token upgrade in Solidity smart contract programming language
+* TMNCrowdsale contracts: token, ICO, uncapped ICO, pricing, transfer lock ups, token upgrade in Solidity smart contract programming language
 
 * Automated test suite in Python
 
@@ -89,7 +89,7 @@ Features and design goals
 
 * **AML**: Anti-money laundering processes are supported through offloaded chain analysis - often a requirement to open a bank account - `see AMLToken <https://github.com/TokenMarketNet/ico/blob/master/contracts/AMLToken.sol>`_ 
 
-* **Separation of concerns**: Crowdsale, token and other logic lies in separate contracts that can be assembled together like lego bricks
+* **Separation of concerns**: TMNCrowdsale, token and other logic lies in separate contracts that can be assembled together like lego bricks
 
 * **Testable**: We aim for 100% branch code coverage by automated test suite
 

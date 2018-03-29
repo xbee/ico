@@ -74,7 +74,7 @@ contract RelaunchedCrowdsale is MintedTokenCappedCrowdsale {
     reissuedTransactions[_originalTxHash] = true;
 
     // Mint new token to give it to the original investor
-    MintableToken mintableToken = MintableToken(token);
+    TMNMintableToken mintableToken = TMNMintableToken(token);
     mintableToken.mint(_addr, _tokenAmount);
   }
 

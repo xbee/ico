@@ -19,7 +19,7 @@ def aml_token(chain, team_multisig, token_name, token_symbol, initial_supply) ->
 
 @pytest.fixture
 def released_aml_token(chain, team_multisig, aml_token, release_agent, customer) -> Contract:
-    """Create a Crowdsale token where transfer restrictions have been lifted."""
+    """Create a TMNCrowdsale token where transfer restrictions have been lifted."""
 
     aml_token.transact({"from": team_multisig}).setReleaseAgent(team_multisig)
     aml_token.transact({"from": team_multisig}).releaseTokenTransfer()

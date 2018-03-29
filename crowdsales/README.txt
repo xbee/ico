@@ -1,1 +1,1 @@
-Crowdsale definitions go here.
+TMNCrowdsale definitions go here.

@@ -6,8 +6,8 @@
 
 pragma solidity ^0.4.8;
 
-import "./Crowdsale.sol";
-import "./MintableToken.sol";
+import "./TMNCrowdsale.sol";
+import "./TMNMintableToken.sol";
 
 /**
  * ICO crowdsale contract that is capped by amout of tokens.
@@ -16,12 +16,12 @@ import "./MintableToken.sol";
  *
  *
  */
-contract MintedTokenCappedCrowdsale is Crowdsale {
+contract MintedTokenCappedCrowdsale is TMNCrowdsale {
 
   /* Maximum amount of tokens this crowdsale can sell. */
   uint public maximumSellableTokens;
 
-  function MintedTokenCappedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, uint _maximumSellableTokens) Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
+  function MintedTokenCappedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, uint _maximumSellableTokens) TMNCrowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
     maximumSellableTokens = _maximumSellableTokens;
   }
 
@@ -40,7 +40,7 @@ contract MintedTokenCappedCrowdsale is Crowdsale {
    * Dynamically create tokens and assign them to the investor.
    */
   function assignTokens(address receiver, uint tokenAmount) internal {
-    MintableToken mintableToken = MintableToken(token);
+    TMNMintableToken mintableToken = TMNMintableToken(token);
     mintableToken.mint(receiver, tokenAmount);
   }
 }

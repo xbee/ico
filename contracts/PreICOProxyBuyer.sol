@@ -6,8 +6,8 @@
 
 pragma solidity ^0.4.6;
 
-import "zeppelin/contracts/math/SafeMath.sol";
-import "./Crowdsale.sol";
+import "./zeppelin/contracts/math/SafeMath.sol";
+import "./TMNCrowdsale.sol";
 import "./Haltable.sol";
 
 /**
@@ -68,7 +68,7 @@ contract PreICOProxyBuyer is Ownable, Haltable {
   bool public forcedRefund;
 
   /** Our ICO contract where we will move the funds */
-  Crowdsale public crowdsale;
+  TMNCrowdsale public crowdsale;
 
   /** What is our current state. */
   enum State{Unknown, Funding, Distributing, Refunding}
@@ -155,7 +155,7 @@ contract PreICOProxyBuyer is Ownable, Haltable {
       throw;
     }
 
-    // We will use the same event form the Crowdsale for compatibility reasons
+    // We will use the same event form the TMNCrowdsale for compatibility reasons
     // despite not having a token amount.
     Invested(investor, msg.value, 0, customerId);
   }
@@ -181,7 +181,7 @@ contract PreICOProxyBuyer is Ownable, Haltable {
       throw;
     }
 
-    // Crowdsale not yet set
+    // TMNCrowdsale not yet set
     if(address(crowdsale) == 0) throw;
 
     // Buy tokens on the contract
@@ -273,7 +273,7 @@ contract PreICOProxyBuyer is Ownable, Haltable {
   /**
    * Set the target crowdsale where we will move presale funds when the crowdsale opens.
    */
-  function setCrowdsale(Crowdsale _crowdsale) public onlyOwner {
+  function setCrowdsale(TMNCrowdsale _crowdsale) public onlyOwner {
     crowdsale = _crowdsale;
 
     // Check interface
@@ -292,8 +292,8 @@ contract PreICOProxyBuyer is Ownable, Haltable {
     forcedRefund = true;
   }
 
-  /// @dev This should be used if the Crowdsale fails, to receive the refuld money.
-  ///      we can't use Crowdsale's refund, since our default function does not
+  /// @dev This should be used if the TMNCrowdsale fails, to receive the refuld money.
+  ///      we can't use TMNCrowdsale's refund, since our default function does not
   ///      accept money in.
   function loadRefund() public payable {
     if(getState() != State.Refunding) throw;

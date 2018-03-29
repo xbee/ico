@@ -30,8 +30,8 @@ def main(chain, address, csv_file):
         # Sanity check
         print("Block number is", web3.eth.blockNumber)
 
-        Crowdsale = c.provider.get_base_contract_factory('MintedTokenCappedCrowdsale')
-        crowdsale = Crowdsale(address=address)
+        TMNCrowdsale = c.provider.get_base_contract_factory('MintedTokenCappedCrowdsale')
+        crowdsale = TMNCrowdsale(address=address)
 
         Token = c.provider.get_base_contract_factory('CrowdsaleToken')
         token = Token(address=crowdsale.call().token())

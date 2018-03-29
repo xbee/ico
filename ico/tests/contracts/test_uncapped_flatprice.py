@@ -24,7 +24,7 @@ def test_initialized(ico: Contract, uncapped_token: Contract, team_multisig, pre
     # We have owner
     assert ico.call().owner() == team_multisig
 
-    # Crowdsale contract is in minters
+    # TMNCrowdsale contract is in minters
     assert uncapped_token.call().mintAgents(ico.address) == True
     assert not uncapped_token.call().released()
     assert not ico.call().halted()
@@ -99,7 +99,7 @@ def test_buy_one_investor(chain: TestRPCChain, web3: Web3, ico: Contract, uncapp
     # Events
     #
 
-    # Crowdsale
+    # TMNCrowdsale
     events = ico.pastEvents("Invested").get()
     assert len(events) == 1
     e = events[0]
@@ -152,7 +152,7 @@ def test_buy_again(chain: TestRPCChain, web3: Web3, ico: Contract, uncapped_toke
     # Events
     #
 
-    # Crowdsale
+    # TMNCrowdsale
     events = ico.pastEvents("Invested").get()
     assert len(events) == 2
 
@@ -197,7 +197,7 @@ def test_buy_two_investors(chain: TestRPCChain, web3: Web3, ico: Contract, uncap
     # Events
     #
 
-    # Crowdsale
+    # TMNCrowdsale
     events = ico.pastEvents("Invested").get()
     assert len(events) == 2
 
@@ -316,7 +316,7 @@ def test_malicious_halt(chain: TestRPCChain, web3: Web3, ico: Contract, uncapped
 
 
 def test_finalize(chain: TestRPCChain, web3: Web3, ico: Contract, malicious_address: str):
-    """Crowdsale can be finalized and the tokens can be released."""
+    """TMNCrowdsale can be finalized and the tokens can be released."""
 
     with pytest.raises(TransactionFailed):
         ico.transact({"from": malicious_address}).halt()

@@ -33,7 +33,7 @@ def finalizer(chain, presale_crowdsale, uncapped_token, team_multisig) -> Contra
 
 @pytest.fixture()
 def crowdsale(chain, uncapped_flatprice, uncapped_token, team_multisig, finalizer) -> Contract:
-    """Crowdsale used intests.."""
+    """TMNCrowdsale used intests.."""
     uncapped_flatprice.transact({"from": team_multisig}).setFinalizeAgent(finalizer.address)
 
     assert uncapped_flatprice.call().isFinalizerSane()

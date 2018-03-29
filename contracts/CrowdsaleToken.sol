@@ -8,7 +8,7 @@ pragma solidity ^0.4.8;
 
 import "./UpgradeableToken.sol";
 import "./ReleasableToken.sol";
-import "./MintableToken.sol";
+import "./TMNMintableToken.sol";
 
 
 /**
@@ -22,7 +22,7 @@ import "./MintableToken.sol";
  * - The token can be capped (supply set in the constructor) or uncapped (crowdsale contract can mint new tokens)
  *
  */
-contract CrowdsaleToken is ReleasableToken, MintableToken, UpgradeableToken {
+contract CrowdsaleToken is ReleasableToken, TMNMintableToken, UpgradeableToken {
 
   /** Name and symbol were updated. */
   event UpdatedTokenInformation(string newName, string newSymbol);

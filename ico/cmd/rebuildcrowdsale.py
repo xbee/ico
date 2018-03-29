@@ -62,7 +62,7 @@ def main(chain, address, contract_address, csv_file, limit, start_from, multipli
         RelaunchedCrowdsale = c.provider.get_base_contract_factory('RelaunchedCrowdsale')
         relaunched_crowdsale = RelaunchedCrowdsale(address=contract_address)
 
-        print("Crowdsale contract is", contract_address)
+        print("TMNCrowdsale contract is", contract_address)
         print("Currently issued", relaunched_crowdsale.call().tokensSold())
 
         assert relaunched_crowdsale.call().owner().lower() == address.lower(), "We are not the crowdsale owner. Real owner is {}, we are {}".format(relaunched_crowdsale.call().owner(), address)

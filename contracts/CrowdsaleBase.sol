@@ -13,13 +13,13 @@ import "./FinalizeAgent.sol";
 
 
 /**
- * Crowdsale state machine without buy functionality.
+ * TMNCrowdsale state machine without buy functionality.
  *
  * Implements basic state machine logic, but leaves out all buy functions,
  * so that subclasses can implement their own buying logic.
  *
  *
- * For the default buy() implementation see Crowdsale.sol.
+ * For the default buy() implementation see TMNCrowdsale.sol.
  */
 contract CrowdsaleBase is Haltable {
 
@@ -106,7 +106,7 @@ contract CrowdsaleBase is Haltable {
   // Address early participation whitelist status changed
   event Whitelisted(address addr, bool status);
 
-  // Crowdsale end time has been changed
+  // TMNCrowdsale end time has been changed
   event EndsAtChanged(uint newEndsAt);
 
   function CrowdsaleBase(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) {
@@ -152,7 +152,7 @@ contract CrowdsaleBase is Haltable {
   /**
    * Make an investment.
    *
-   * Crowdsale must be running for one to invest.
+   * TMNCrowdsale must be running for one to invest.
    * We must have not pressed the emergency brake.
    *
    * @param receiver The Ethereum address who receives the tokens

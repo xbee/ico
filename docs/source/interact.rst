@@ -296,7 +296,7 @@ Here is an example how to whitelist ICO participants before the ICO beings:
 
     with p.get_chain("kovan") as chain:
         web3 = chain.web3
-        Contract = get_contract_by_name(chain, "Crowdsale")
+        Contract = get_contract_by_name(chain, "TMNCrowdsale")
         contract = Contract(address="0x06829437859594e19276f87df601436ef55af4f2")
 
         if is_account_locked(web3, account):
@@ -326,7 +326,7 @@ To mix fat finger errors:
 
     with p.get_chain("mainnet") as chain:
         web3 = chain.web3
-        Contract = get_contract_by_name(chain, "Crowdsale")
+        Contract = get_contract_by_name(chain, "TMNCrowdsale")
         contract = Contract(address="0x")
 
         if is_account_locked(web3, account):
@@ -359,7 +359,7 @@ Try to buy from a whitelisted address or on a testnet with a generated customer 
 
     with p.get_chain("kovan") as chain:
         web3 = chain.web3
-        Contract = get_contract_by_name(chain, "Crowdsale")
+        Contract = get_contract_by_name(chain, "TMNCrowdsale")
         contract = Contract(address="0x")
 
         if is_account_locked(web3, account):
@@ -488,8 +488,8 @@ Set pricing data for early investors using PresaleFundCollector + MilestonePrici
         web3 = chain.web3
 
         # Safety check that Crodsale is using our pricing strategy
-        Crowdsale = get_contract_by_name(chain, "Crowdsale")
-        crowdsale = Crowdsale(address=crowdsale_address)
+        TMNCrowdsale = get_contract_by_name(chain, "TMNCrowdsale")
+        crowdsale = TMNCrowdsale(address=crowdsale_address)
         assert crowdsale.call().pricingStrategy() == pricing_strategy_address
 
         # Get owner access to pricing
@@ -547,13 +547,13 @@ Example:
     with p.get_chain("mainnet") as chain:
         web3 = chain.web3
 
-        Crowdsale = get_contract_by_name(chain, "Crowdsale")
-        crowdsale = Crowdsale(address=crowdsale_address)
+        TMNCrowdsale = get_contract_by_name(chain, "TMNCrowdsale")
+        crowdsale = TMNCrowdsale(address=crowdsale_address)
 
         for presale_address in presale_addresses:
             print("Processing contract", presale_address)
             participate_early(chain, web3, presale_address, crowdsale_address, deploy_address, timeout=3600)
-            print("Crowdsale collected", crowdsale.call().weiRaised() / 10**18, "tokens sold", crowdsale.call().tokensSold() / 10**8, "money left", from_wei(web3.eth.getBalance(deploy_address), "ether"))
+            print("TMNCrowdsale collected", crowdsale.call().weiRaised() / 10**18, "tokens sold", crowdsale.call().tokensSold() / 10**8, "money left", from_wei(web3.eth.getBalance(deploy_address), "ether"))
 
 Triggering presale proxy buy contract
 =====================================
@@ -578,8 +578,8 @@ Move funds from the proxy buy contract to the actual crowdsale.
         web3 = chain.web3
 
         # Safety check that Crodsale is using our pricing strategy
-        Crowdsale = get_contract_by_name(chain, "Crowdsale")
-        crowdsale = Crowdsale(address=crowdsale_address)
+        TMNCrowdsale = get_contract_by_name(chain, "TMNCrowdsale")
+        crowdsale = TMNCrowdsale(address=crowdsale_address)
 
         # Make sure we are getting special price
         EthTranchePricing = get_contract_by_name(chain, "EthTranchePricing")
@@ -625,8 +625,8 @@ The token sale owner might want to reset the end date. This can happen in the ca
         closing_time = int(timestamp + 15*60)
 
         # Safety check that Crodsale is using our pricing strategy
-        Crowdsale = get_contract_by_name(chain, "Crowdsale")
-        crowdsale = Crowdsale(address=crowdsale_address)
+        TMNCrowdsale = get_contract_by_name(chain, "TMNCrowdsale")
+        crowdsale = TMNCrowdsale(address=crowdsale_address)
         txid = crowdsale.transact({"from": deploy_address}).setEndsAt(closing_time)
         print(crowdsale.call().getState())
 
@@ -652,8 +652,8 @@ Example:
         with p.get_chain("mainnet") as chain:
             web3 = chain.web3
 
-            Crowdsale = get_contract_by_name(chain, "Crowdsale")
-            crowdsale = Crowdsale(address=crowdsale_address)
+            TMNCrowdsale = get_contract_by_name(chain, "TMNCrowdsale")
+            crowdsale = TMNCrowdsale(address=crowdsale_address)
 
             BonusFinalizeAgent = get_contract_by_name(chain, "BonusFinalizeAgent")
             finalize_agent = BonusFinalizeAgent(address=crowdsale.call().finalizeAgent())
@@ -685,7 +685,7 @@ Example:
 
     with p.get_chain("mainnet") as chain:
         web3 = chain.web3
-        Contract = get_contract_by_name(chain, "Crowdsale")
+        Contract = get_contract_by_name(chain, "TMNCrowdsale")
         contract = Contract(address="0x0FB81a518dCa5495986C5c2ec29e989390e0E406")
 
         if is_account_locked(web3, account):
@@ -817,8 +817,8 @@ Example:
 
     with p.get_chain("mainnet") as chain:
         web3 = chain.web3
-        Crowdsale = get_contract_by_name(chain, "Crowdsale")
-        crowdsale = Crowdsale(address="0x")
+        TMNCrowdsale = get_contract_by_name(chain, "TMNCrowdsale")
+        crowdsale = TMNCrowdsale(address="0x")
 
         print(crowdsale.call().weiRaised() / (10**18))
 

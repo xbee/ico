@@ -18,7 +18,7 @@ def default_finalize_agent(chain, uncapped_token, uncapped_flatprice) -> Contrac
 def uncapped_flatprice_final(chain, uncapped_token, uncapped_flatprice, team_multisig, default_finalize_agent) -> Contract:
     """A ICO contract where we have a default finalizer in place."""
 
-    # Crowdsale calls this finalizer at the success
+    # TMNCrowdsale calls this finalizer at the success
     uncapped_flatprice.transact({"from": team_multisig}).setFinalizeAgent(default_finalize_agent.address)
 
     # Token allows finalizer to release the tokens

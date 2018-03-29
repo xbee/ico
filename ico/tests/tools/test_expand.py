@@ -8,9 +8,9 @@ from ico.importexpand import expand_contract_imports
 def test_expand_crowdsale_contract(project: Project):
     """Expand import statement in a Solidity source file."""
 
-    expanded, imported_files = expand_contract_imports(project, "Crowdsale.sol")
+    expanded, imported_files = expand_contract_imports(project, "TMNCrowdsale.sol")
 
-    assert "contract Crowdsale" in expanded
+    assert "contract TMNCrowdsale" in expanded
     assert 'import "' not in expanded
 
 

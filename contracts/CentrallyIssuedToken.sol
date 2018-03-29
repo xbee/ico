@@ -1,6 +1,6 @@
 pragma solidity ^0.4.6;
 
-import "./BurnableToken.sol";
+import "./TMNBurnableToken.sol";
 import "./UpgradeableToken.sol";
 
 
@@ -14,7 +14,7 @@ import "./UpgradeableToken.sol";
  * The owner, or anybody, can burn any excessive tokens they are holding.
  *
  */
-contract CentrallyIssuedToken is BurnableToken, UpgradeableToken {
+contract CentrallyIssuedToken is TMNBurnableToken, UpgradeableToken {
 
   // Token meta information
   string public name;

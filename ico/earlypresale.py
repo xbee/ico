@@ -16,7 +16,7 @@ def participate_early(chain, web3: Web3, presale_address: str, crowdsale_address
 
     .. note ::
 
-        Crowdsale contract checks the participate whitelist by invest address, not by msg.sender.
+        TMNCrowdsale contract checks the participate whitelist by invest address, not by msg.sender.
         This process will open the presale investors an ability to participate to the crowdsale early,
         bypassing the retail investor start time. However they could also top up their existing
         preico accounts, so this is largerly no issue.
@@ -31,8 +31,8 @@ def participate_early(chain, web3: Web3, presale_address: str, crowdsale_address
     PresaleFundCollector = get_contract_by_name(chain, "PresaleFundCollector")
     presale = PresaleFundCollector(address=presale_address)
 
-    Crowdsale = PresaleFundCollector = get_contract_by_name(chain, "Crowdsale")
-    crowdsale = Crowdsale(address=crowdsale_address)
+    TMNCrowdsale = PresaleFundCollector = get_contract_by_name(chain, "TMNCrowdsale")
+    crowdsale = TMNCrowdsale(address=crowdsale_address)
 
     # Make sure presale is correctly set
     txid = presale.transact({"from": deploy_address}).setCrowdsale(crowdsale.address)

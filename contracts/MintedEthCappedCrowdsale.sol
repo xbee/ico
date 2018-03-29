@@ -6,8 +6,8 @@
 
 pragma solidity ^0.4.8;
 
-import "./Crowdsale.sol";
-import "./MintableToken.sol";
+import "./TMNCrowdsale.sol";
+import "./TMNMintableToken.sol";
 
 /**
  * ICO crowdsale contract that is capped by amout of ETH.
@@ -16,12 +16,12 @@ import "./MintableToken.sol";
  *
  *
  */
-contract MintedEthCappedCrowdsale is Crowdsale {
+contract MintedEthCappedCrowdsale is TMNCrowdsale {
 
   /* Maximum amount of wei this crowdsale can raise. */
   uint public weiCap;
 
-  function MintedEthCappedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, uint _weiCap) Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
+  function MintedEthCappedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, uint _weiCap) TMNCrowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
     weiCap = _weiCap;
   }
 
@@ -40,7 +40,7 @@ contract MintedEthCappedCrowdsale is Crowdsale {
    * Dynamically create tokens and assign them to the investor.
    */
   function assignTokens(address receiver, uint tokenAmount) internal {
-    MintableToken mintableToken = MintableToken(token);
+    TMNMintableToken mintableToken = TMNMintableToken(token);
     mintableToken.mint(receiver, tokenAmount);
   }
 }

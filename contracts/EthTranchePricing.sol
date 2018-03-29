@@ -7,9 +7,9 @@
 pragma solidity ^0.4.6;
 
 import "./PricingStrategy.sol";
-import "./Crowdsale.sol";
+import "./TMNCrowdsale.sol";
 import "./SafeMathLib.sol";
-import "zeppelin/contracts/ownership/Ownable.sol";
+import "./zeppelin/contracts/ownership/Ownable.sol";
 
 /// @dev Tranche based pricing with special support for pre-ico deals.
 ///      Implementing "first price" tranches, meaning, that if byers order is
@@ -116,7 +116,7 @@ contract EthTranchePricing is PricingStrategy, Ownable {
     // Our tranches are not bound by time, so we can't really check are we sane
     // so we presume we are ;)
     // In the future we could save and track raised tokens, and compare it to
-    // the Crowdsale contract.
+    // the TMNCrowdsale contract.
     return true;
   }
 

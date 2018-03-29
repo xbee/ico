@@ -73,7 +73,7 @@ registrar.json
 .ipynb_checkpoints
 *.ipynb
 
-# Crowdsale definitions
+# TMNCrowdsale definitions
 crowdsales/*.yml
 *.csv
 

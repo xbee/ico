@@ -2,7 +2,7 @@ from enum import IntEnum
 
 
 class CrowdsaleState(IntEnum):
-    """Match Crowdsale.State in the contract."""
+    """Match TMNCrowdsale.State in the contract."""
     Unknown = 0
     Preparing = 1
     PreFunding = 2

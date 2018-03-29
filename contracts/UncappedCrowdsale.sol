@@ -6,8 +6,8 @@
 
 pragma solidity ^0.4.8;
 
-import "./Crowdsale.sol";
-import "./MintableToken.sol";
+import "./TMNCrowdsale.sol";
+import "./TMNMintableToken.sol";
 
 
 /**
@@ -21,9 +21,9 @@ import "./MintableToken.sol";
  * - No cap
  *
  */
-contract UncappedCrowdsale is Crowdsale {
+contract UncappedCrowdsale is TMNCrowdsale {
 
-  function UncappedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
+  function UncappedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) TMNCrowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
 
   }
 
@@ -40,7 +40,7 @@ contract UncappedCrowdsale is Crowdsale {
   }
 
   function assignTokens(address receiver, uint tokenAmount) internal {
-    MintableToken mintableToken = MintableToken(token);
+    TMNMintableToken mintableToken = TMNMintableToken(token);
     mintableToken.mint(receiver, tokenAmount);
   }
 }

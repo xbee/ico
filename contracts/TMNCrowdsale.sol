@@ -30,7 +30,7 @@ import "./CrowdsaleBase.sol";
  * - Cap rules
  *
  */
-contract Crowdsale is CrowdsaleBase {
+contract TMNCrowdsale is CrowdsaleBase {
 
   /* Do we need to have unique contributor id for each customer */
   bool public requireCustomerId;
@@ -44,7 +44,7 @@ contract Crowdsale is CrowdsaleBase {
   /* Server side address that signed allowed contributors (Ethereum addresses) that can participate the crowdsale */
   address public signerAddress;
 
-  function Crowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) CrowdsaleBase(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
+  function TMNCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) CrowdsaleBase(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
   }
 
   /**
@@ -93,7 +93,7 @@ contract Crowdsale is CrowdsaleBase {
    * Track who is the customer making the payment so we can send thank you email.
    */
   function investWithCustomerId(address addr, uint128 customerId) public payable {
-    if(requiredSignedAddress) throw; // Crowdsale allows only server-side signed participants
+    if(requiredSignedAddress) throw; // TMNCrowdsale allows only server-side signed participants
     if(customerId == 0) throw;  // UUIDv4 sanity check
     investInternal(addr, customerId);
   }
@@ -102,8 +102,8 @@ contract Crowdsale is CrowdsaleBase {
    * Allow anonymous contributions to this crowdsale.
    */
   function invest(address addr) public payable {
-    if(requireCustomerId) throw; // Crowdsale needs to track participants for thank you email
-    if(requiredSignedAddress) throw; // Crowdsale allows only server-side signed participants
+    if(requireCustomerId) throw; // TMNCrowdsale needs to track participants for thank you email
+    if(requiredSignedAddress) throw; // TMNCrowdsale allows only server-side signed participants
     investInternal(addr, 0);
   }
 

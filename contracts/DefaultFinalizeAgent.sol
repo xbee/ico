@@ -6,7 +6,7 @@
 
 pragma solidity ^0.4.6;
 
-import "./Crowdsale.sol";
+import "./TMNCrowdsale.sol";
 import "./ReleasableToken.sol";
 
 /**
@@ -17,9 +17,9 @@ import "./ReleasableToken.sol";
 contract DefaultFinalizeAgent is FinalizeAgent {
 
   ReleasableToken public token;
-  Crowdsale public crowdsale;
+  TMNCrowdsale public crowdsale;
 
-  function DefaultFinalizeAgent(ReleasableToken _token, Crowdsale _crowdsale) {
+  function DefaultFinalizeAgent(ReleasableToken _token, TMNCrowdsale _crowdsale) {
     token = _token;
     crowdsale = _crowdsale;
   }

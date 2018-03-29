@@ -7,7 +7,7 @@
 pragma solidity ^0.4.8;
 
 import "./AllocatedCrowdsaleMixin.sol";
-import "./Crowdsale.sol";
+import "./TMNCrowdsale.sol";
 
 
 /**
@@ -16,9 +16,9 @@ import "./Crowdsale.sol";
  * This implementation does not have KYC logic (vs. KYCCrowdsale).
  *
  */
-contract AllocatedCrowdsale is AllocatedCrowdsaleMixin, Crowdsale {
+contract AllocatedCrowdsale is AllocatedCrowdsaleMixin, TMNCrowdsale {
 
-  function AllocatedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, address _beneficiary) Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) AllocatedCrowdsaleMixin(_beneficiary) {
+  function AllocatedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, address _beneficiary) TMNCrowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) AllocatedCrowdsaleMixin(_beneficiary) {
 
   }
 

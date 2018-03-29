@@ -7,7 +7,7 @@
 pragma solidity ^0.4.6;
 
 
-import "./Crowdsale.sol";
+import "./TMNCrowdsale.sol";
 import "./SafeMathLib.sol";
 
 /**
@@ -45,7 +45,7 @@ contract PresaleFundCollector is Ownable {
   bool public moving;
 
   /** Our ICO contract where we will move the funds */
-  Crowdsale public crowdsale;
+  TMNCrowdsale public crowdsale;
 
   event Invested(address investor, uint value);
   event Refunded(address investor, uint value);
@@ -108,7 +108,7 @@ contract PresaleFundCollector is Ownable {
    */
   function participateCrowdsaleInvestor(address investor) public {
 
-    // Crowdsale not yet set
+    // TMNCrowdsale not yet set
     if(address(crowdsale) == 0) throw;
 
     moving = true;
@@ -155,7 +155,7 @@ contract PresaleFundCollector is Ownable {
   /**
    * Set the target crowdsale where we will move presale funds when the crowdsale opens.
    */
-  function setCrowdsale(Crowdsale _crowdsale) public onlyOwner {
+  function setCrowdsale(TMNCrowdsale _crowdsale) public onlyOwner {
      crowdsale = _crowdsale;
   }
 

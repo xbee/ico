@@ -2,7 +2,7 @@ pragma solidity ^0.4.8;
 
 import "../SafeMathLib.sol";
 import "../UpgradeableToken.sol";
-import "../MintableToken.sol";
+import "../TMNMintableToken.sol";
 
 /**
  * A sample token that is used as a migration testing target.

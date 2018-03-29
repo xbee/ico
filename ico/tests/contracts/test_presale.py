@@ -87,7 +87,7 @@ def test_invest_presale_move_to_crowdsale(chain, presale_fund_collector, presale
     value = to_wei(1.5, "ether")
     presale_fund_collector.transact({"from": customer_2, "value": value}).invest()
 
-    # Crowdsale starts
+    # TMNCrowdsale starts
     time_travel(chain, preico_starts_at)
     assert presale_crowdsale.call().finalizeAgent()
     assert presale_crowdsale.call().getState() == CrowdsaleState.Funding

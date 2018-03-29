@@ -25,7 +25,7 @@ def token(chain, team_multisig):
 
 @pytest.fixture
 def token_with_customer_balance(chain, team_multisig, token, customer) -> Contract:
-    """Create a Crowdsale token where transfer restrictions have been lifted."""
+    """Create a TMNCrowdsale token where transfer restrictions have been lifted."""
 
     # Make sure customer 1 has some token balance
     token.transact({"from": team_multisig}).transfer(customer, 10000)

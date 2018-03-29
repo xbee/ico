@@ -8,7 +8,7 @@ pragma solidity ^0.4.8;
 
 import "./StandardTokenExt.sol";
 
-contract BurnableToken is StandardTokenExt {
+contract TMNBurnableToken is StandardTokenExt {
 
   // @notice An address for the transfer event where the burned tokens are transferred in a faux Transfer event
   address public constant BURN_ADDRESS = 0;

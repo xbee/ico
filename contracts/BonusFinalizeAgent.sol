@@ -6,7 +6,7 @@
 
 pragma solidity ^0.4.6;
 
-import "./Crowdsale.sol";
+import "./TMNCrowdsale.sol";
 import "./CrowdsaleToken.sol";
 import "./SafeMathLib.sol";
 
@@ -15,7 +15,7 @@ import "./SafeMathLib.sol";
  *
  * Unlock tokens.
  *
- * BonusAllocationFinal must be set as the minting agent for the MintableToken.
+ * BonusAllocationFinal must be set as the minting agent for the TMNMintableToken.
  *
  */
 contract BonusFinalizeAgent is FinalizeAgent {
@@ -23,7 +23,7 @@ contract BonusFinalizeAgent is FinalizeAgent {
   using SafeMathLib for uint;
 
   CrowdsaleToken public token;
-  Crowdsale public crowdsale;
+  TMNCrowdsale public crowdsale;
 
   /** Total percent of tokens minted to the team at the end of the sale as base points (0.0001) */
   uint public bonusBasePoints;
@@ -34,7 +34,7 @@ contract BonusFinalizeAgent is FinalizeAgent {
   /* How much bonus tokens we allocated */
   uint public allocatedBonus;
 
-  function BonusFinalizeAgent(CrowdsaleToken _token, Crowdsale _crowdsale, uint _bonusBasePoints, address _teamMultisig) {
+  function BonusFinalizeAgent(CrowdsaleToken _token, TMNCrowdsale _crowdsale, uint _bonusBasePoints, address _teamMultisig) {
     token = _token;
     crowdsale = _crowdsale;
     if(address(crowdsale) == 0) {

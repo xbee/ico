@@ -119,7 +119,7 @@ def milestone_pricing(chain, start_time, end_time):
 
 @pytest.fixture
 def original_crowdsale(chain, team_multisig, start_time, end_time, milestone_pricing, preico_cap, minimum_funding_goal, cap, token, founder_allocation) -> Contract:
-    """Crowdsale that we are going to relaunch.
+    """TMNCrowdsale that we are going to relaunch.
 
     This will reserve the release agent for the original crowdsale.
     """
